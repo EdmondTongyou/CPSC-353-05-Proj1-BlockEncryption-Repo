@@ -135,3 +135,31 @@ function mousePressed( )
     //console.log( "bot x,y = " + g_bot.x + "," + g_bot.y );
     draw_bot( );
 }
+
+// Function to check validity of plaintext passwords
+function isPasswordValid(plaintext)
+{
+    // RegEx character sets
+    let upper_ptrn = new RegExp("[A-Z]");
+    let lower_ptrn = new RegExp("[a-z]");
+    let digit_ptrn = new RegExp("[0-9]");
+    let symbol_ptrn = new RegExp("[!@#$%^&*()_\\-+=]"); // double escape the hyphen character to match (\\-) for hyphen
+
+    invalid = 0;
+    while (invalid == 0) 
+    {
+        if (plaintext.length != 8) {invalid++; break;} // Check if the length is the correct size. Must be 8.
+
+        if (!upper_ptrn.test(plaintext)) {invalid++; break;} // Check if string contains uppercase.
+
+        if (!lower_ptrn.test(plaintext)) {invalid++; break;} // Check if string contains lowercase.
+
+        if (!digit_ptrn.test(plaintext)) {invalid++; break;} // Check if string contains a digit 0-9
+
+        if (!symbol_ptrn.test(plaintext)) {invalid++; break;} // Check if string contains a symbol
+
+        break; // passed all tests
+    }
+
+    return (invalid == 0); // True if valid. False if invalid.
+}
