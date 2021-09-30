@@ -143,7 +143,7 @@ function isPasswordValid(plaintext)
     let upper_ptrn = new RegExp("[A-Z]");
     let lower_ptrn = new RegExp("[a-z]");
     let digit_ptrn = new RegExp("[0-9]");
-    let symbol_ptrn = new RegExp("[!@#$%^&*()_\\-+=]"); // double escape the hyphen character to match (\\-) for hyphen
+    let symbol_ptrn = new RegExp("[!\"#$%&'()*+,-./:;<=>?@\\[\\]\\\\^_`{|}~]"); // double escape brackets. Triple escape backslash \ to match.
 
     invalid = 0;
     while (invalid == 0) 
