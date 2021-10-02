@@ -37,35 +37,44 @@ function setup() // P5 Setup Fcn
 function retrieve_input()
 {
     var messageFieldInput = document.getElementById("messageInput").value; // Get data from messageInput box.
-    var originalMessageLength = messageFieldInput.length;
-    console.log("Original Message Length: " + originalMessageLength);
+    //? Allow msg length of 0?
+    var orig_msg_length = messageFieldInput.length;
+    console.log("Original Message Length: " + orig_msg_length);
 
-    let padded_message = pad_message(messageFieldInput); // pad message func call.
-    console.log("PADDED MESSAGE: |" + padded_message + "|"); // show padded msg between |
+    //!
+    //? Alert box or show html | could also turn this into a function.
+    var error = document.getElementById("msgError");
+    if (orig_msg_length == 0) {
+        error.textContent = "Please enter a message";
+        error.style.color = "red";
+        //alert("Please enter a message.");
+        return;
+    } else {error.textContent = "";}
+    //!
 
-    //? Can turn this into 1 function mixed into pad_message function? return prepared_messsage?
-    let block_one = "1" + padded_message.substring(0,7);
-    let block_two = "2" + padded_message.substring(7,14);
-    let block_three = "3" + padded_message.substring(14,21);
-    let block_four = "4" + padded_message.substring(21,27);
-    
-    //TODO: append the ascii code of length + 32
-    //? Not sure if this how this works
-    let ascii_length_char = String.fromCharCode(originalMessageLength + 32); // get the ascii code from the length of message + 32.
-    // https://www.asciitable.com/
+    var prepared_message = prepareMessage(messageFieldInput, orig_msg_length); // prepare msg func call.
+    console.log("PREPARED MESSAGE: |" + prepared_message + "|"); // show prepared msg between |
 
-    var prepared_message = block_one + block_two + block_three + block_four + ascii_length_char;
-
-    var passwordFieldInput = document.getElementById("passwordInput").value; // Get data from passwordInput box.
-    console.log( "Password inputted = " + passwordFieldInput ); // Show data in F12 Console output.
-    let validity = isPasswordValid(passwordFieldInput); // store T/F value whether password follows comprehensive8.
+    var pw_field_input = document.getElementById("passwordInput").value; // Get data from passwordInput box.
+    console.log( "Password inputted = " + pw_field_input ); // Show data in F12 Console output.
+    let validity = isPasswordValid(pw_field_input); // store T/F value whether password follows comprehensive8.
     console.log("Password Valid: " + validity); // output the result of password validity.
-    
+
+    //!
+    error = document.getElementById("pwError");
+    if (!validity) {
+        error.textContent = "Please enter a valid password";
+        error.style.color = "red";
+        //alert("Please enter a valid password.");
+        return;
+    } else {error.textContent = "";}
+    //!
+
     // set the formatting for text
     stroke(0);
     fill(255, 0, 0);
     textSize(17);
-     // draw the text for each character in message.
+     // draw the text for each character in prepared_message.
     for (i in prepared_message)
     {
         text(prepared_message[i], (8+(i*25)), 20);
@@ -101,11 +110,20 @@ function isPasswordValid(plaintext)
 }
 
 // Function to pad message with spaces if length less than 27.
-function pad_message(message)
+function prepareMessage(message, length)
 {
-    if (message.length == 27) return message; // no padding if 27 chars long
+    if (message.length < 27) {message = (message + "                          ").substring(0,27);}
 
-    //? Allow message length of 0?
-    message = message + "                          "; // 26 spaces to pad if message is 1 char long. 
-    return (message.substring(0,27)); // return the first 27 chars of the string.
+    // now prepare the message
+    let block_one = "1" + message.substring(0,7);
+    let block_two = "2" + message.substring(7,14);
+    let block_three = "3" + message.substring(14,21);
+    let block_four = "4" + message.substring(21,27);
+
+    //TODO: append the ascii code of length + 32
+    //? Not sure if this how this works
+    let ascii_length_char = String.fromCharCode(length + 32); // get the ascii code from the length of message + 32.
+    // https://www.asciitable.com/
+
+    return (block_one + block_two + block_three + block_four + ascii_length_char);
 }
