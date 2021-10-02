@@ -20,7 +20,6 @@ function draw_grid( rminor, rmajor, rstroke, rfill  )
         strokeWeight( line_wgt );
         line( ix, 0, ix, height );
         strokeWeight( 1 );
-        if ( ix % rmajor == 0 ) { text( ix, ix, 10 ); }
     }
     for ( var iy = 0; iy < height; iy += rminor )
     {
@@ -30,6 +29,5 @@ function draw_grid( rminor, rmajor, rstroke, rfill  )
         strokeWeight( line_wgt );
         line( 0, iy, width, iy );
         strokeWeight( 1 );
-        if ( iy % rmajor == 0 ) { text( iy, 0, iy + 10 ); }
     }
 }

@@ -5,3 +5,11 @@ body {
 canvas {
   background-color: black;
 }
+
+.wrapper {
+  text-align: center;
+}
+
+.instructionList {
+  text-align: left;
+}
