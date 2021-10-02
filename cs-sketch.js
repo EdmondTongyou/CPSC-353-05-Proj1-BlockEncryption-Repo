@@ -16,7 +16,7 @@
     */
 
 //TODO: old text stays on grid after submitting without refresh
-//TODO: don't execute with invalid password.
+//TODO: don't execute with invalid password. | alert box or html
 //TODO: ***ENCRYPTION FUNCTION***
 //TODO: show encrypted message under prepared message
 //TODO: check if decryption works. Should be the same method as encrypt.
