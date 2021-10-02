@@ -5,6 +5,8 @@
         // Name3 : email
         // Name4 : email
 
+//TODO: Header information (author, description)
+
 // File Information
     // File Name: cs-sketch.js
     /*
@@ -13,9 +15,11 @@
         comes from this file.
     */
 
-//TODO: Header information (author, description)
 //TODO: old text stays on grid after submitting without refresh
 //TODO: don't execute with invalid password.
+//TODO: ***ENCRYPTION FUNCTION***
+//TODO: show encrypted message under prepared message
+//TODO: check if decryption works. Should be the same method as encrypt.
 
 var g_canvas = { cell_size:20, wid:40, hgt:20 }; // JS Global var, w canvas size info. //? wid:50 to make grid 5 sections of 8 cells.
 
@@ -33,19 +37,26 @@ function setup() // P5 Setup Fcn
 function retrieve_input()
 {
     var messageFieldInput = document.getElementById("messageInput").value; // Get data from messageInput box.
+    var originalMessageLength = messageFieldInput.length;
+    console.log("Original Message Length: " + originalMessageLength);
+
     let padded_message = pad_message(messageFieldInput); // pad message func call.
-    console.log("PADDED MESSAGE: |" + padded_message + "|");
+    console.log("PADDED MESSAGE: |" + padded_message + "|"); // show padded msg between |
+
+    //? Can turn this into 1 function mixed into pad_message function? return prepared_messsage?
     let block_one = "1" + padded_message.substring(0,7);
     let block_two = "2" + padded_message.substring(7,14);
     let block_three = "3" + padded_message.substring(14,21);
-    let block_four = "4" + padded_message.substring(21,27); //TODO: append the ascii code of length + 32?
-
-    let prepared_message = block_one + block_two + block_three + block_four;
-
-
- 
-    var passwordFieldInput = document.getElementById("passwordInput").value; // Get data from passwordInput box.
+    let block_four = "4" + padded_message.substring(21,27);
     
+    //TODO: append the ascii code of length + 32
+    //? Not sure if this how this works
+    let ascii_length_char = String.fromCharCode(originalMessageLength + 32); // get the ascii code from the length of message + 32.
+    // https://www.asciitable.com/
+
+    var prepared_message = block_one + block_two + block_three + block_four + ascii_length_char;
+
+    var passwordFieldInput = document.getElementById("passwordInput").value; // Get data from passwordInput box.
     console.log( "Password inputted = " + passwordFieldInput ); // Show data in F12 Console output.
     let validity = isPasswordValid(passwordFieldInput); // store T/F value whether password follows comprehensive8.
     console.log("Password Valid: " + validity); // output the result of password validity.
@@ -54,9 +65,10 @@ function retrieve_input()
     stroke(0);
     fill(255, 0, 0);
     textSize(17);
+     // draw the text for each character in message.
     for (i in prepared_message)
     {
-        text(prepared_message[i], (8+(i*25)), 20); // draw the text for each character in message.
+        text(prepared_message[i], (8+(i*25)), 20);
     }
 }
 
