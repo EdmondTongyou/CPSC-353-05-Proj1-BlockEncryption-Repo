@@ -16,10 +16,10 @@
     */
 
 //TODO: old text stays on grid after submitting without refresh
-//TODO: don't execute with invalid password. | alert box or html
 //TODO: ***ENCRYPTION FUNCTION***
 //TODO: show encrypted message under prepared message
 //TODO: check if decryption works. Should be the same method as encrypt.
+//TODO: dictionary word check for password.
 
 var g_canvas = { cell_size:20, wid:40, hgt:20 }; // JS Global var, w canvas size info. //? wid:50 to make grid 5 sections of 8 cells.
 
@@ -126,4 +126,42 @@ function prepareMessage(message, length)
     // https://www.asciitable.com/
 
     return (block_one + block_two + block_three + block_four + ascii_length_char);
+}
+
+//! SINGLE ENCRYPT FUNCTION DOESNT WORK FOR SOME VALUES
+//! SOME VALUES ARE OUT OF RANGE OF PRINTABLE ASCII CHARACTERS (32-127)
+//! EG ENCRYPT("t", "L") GIVES ASCII ENCRYPTED CHAR CODE OF 152. NOT IN RANGE.
+function single_encrypt(msgChar, pwChar)
+{
+    // first 4 chars of message -> 1st char of password etc.
+    let ax = msgChar;
+    let px = pwChar;
+
+    ax = ax.charCodeAt(0) - 32;
+    px = px.charCodeAt(0) - 32;
+    console.log("ax: " + ax + " | px: " + px);
+
+    let bx = (ax ^ px); // bitwise XOR on ax and px
+    console.log("bx: " + bx);
+    let cx = bx + 32;
+    console.log("cx: " + cx);
+    return String.fromCharCode(cx); // returns ascii code of encrypted char for message.
+}
+
+function encrypt(message, password) 
+{
+	let indexC = 0;
+  let cap = 0;
+  for (var p of password)
+  {
+  	console.log("P CHAR: " + p);
+  	while (cap < 4)
+    {
+    	console.log("MESSAGE CHAR: " + message[indexC]);
+    	console.log(single_encrypt(message[indexC], p));
+      indexC++;
+      cap++;
+    }
+    cap = 0;
+  }
 }
