@@ -1,9 +1,9 @@
 // Author Information
-    // Team Name: Temp
-        // Name1 : email
-        // Name2 : email
-        // Name3 : email
-        // Name4 : email
+    // Team Name: C.U.H.
+        // Clemente Solorio : clem@csu.fullerton.edu
+        // Edmond Tongyou : email
+        // Chukwudi Ikem : email
+        // Daniel Lopez : email
 
 //TODO: Header information (author, description)
 
