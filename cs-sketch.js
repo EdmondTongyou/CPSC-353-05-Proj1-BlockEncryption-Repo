@@ -69,7 +69,7 @@ function retrieve_input()
 
     var encoded_msg = encrypt(prepared_message, pw_field_input);
     console.log("Encoded message: " + encoded_msg);
-
+    fill("yellow");
     for (i in encoded_msg) {
         text(encoded_msg[i], (8+(i*25)), 42);
     }
