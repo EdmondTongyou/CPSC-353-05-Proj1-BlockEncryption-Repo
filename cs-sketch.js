@@ -74,9 +74,17 @@ function retrieve_input()
         text(encoded_msg[i], (8+(i*25)), 42);
     }
 
+    /*
     var hook = document.getElementById("encodedMsg");
     hook.textContent = "Encoded message: " + encoded_msg;
     hook.style.color = "blue";
+    */
+
+    var encOutput = document.getElementById("encOut");
+    var textOut = document.getElementById("textOut");
+    textOut.removeAttribute("hidden");
+    encOutput.removeAttribute("hidden");
+    encOutput.setAttribute("value", encoded_msg);
 }
 
 // Function to check validity of plaintext passwords

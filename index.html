@@ -31,9 +31,9 @@
 <body>
   <!-- HTML page body, where raw text gets displayed on the page -->
   <h1>Simple Block Encryption</h1> <!-- Text in a high priority heading -->
-
+  
   <p>Team Name: C.U.H.</p>
-
+  
   <div style="display:flex;justify-content:center;align-items:center;">
     <div style="display:flex;justify-content:center;align-items:center;">
       <div>
@@ -63,7 +63,11 @@
       </div>
     </div>
   </div>
-
+  <form>
+    <label for="encOut" id="textOut" hidden>Encrypted message:</label>
+    <input type="text" id="encOut" name="encOut" size="42" readonly hidden><br><br>
+  </form>
+  
 </body> <!-- HTML display page ends here -->
 <script src="assets/draw-stuff.js"></script> <!-- Load some JS fcns in a file -->
 
