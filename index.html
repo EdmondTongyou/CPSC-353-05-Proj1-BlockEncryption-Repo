@@ -1,9 +1,9 @@
 <!-- Author Information -->
-  <!-- Team Name: Temp -->
-    <!-- Name1 : email --> 
-    <!-- Name2 : email --> 
-    <!-- Name3 : email --> 
-    <!-- Name4 : email --> 
+  <!-- Team Name: C.U.H. -->
+    <!-- Clemente Solorio : clem@csu.fullerton.edu --> 
+    <!-- Edmond Tongyou : email --> 
+    <!-- Chukwudi Ikem : email --> 
+    <!-- Daniel Lopez : email --> 
 
 <!--TODO: Finish file and author descriptions-->
 
@@ -31,9 +31,9 @@
 <body>
   <!-- HTML page body, where raw text gets displayed on the page -->
   <h1>Simple Block Encryption</h1> <!-- Text in a high priority heading -->
-
-  <p>Team Name: Temp</p>
-
+  
+  <p>Team Name: C.U.H.</p>
+  
   <div style="display:flex;justify-content:center;align-items:center;">
     <div style="display:flex;justify-content:center;align-items:center;">
       <div>
@@ -57,12 +57,17 @@
             <input id="passwordInput" type="text" placeholder="Enter a password" minlength="8" maxlength="8" autocomplete="off"/>
             <input id="submitButton" type="button" value="Submit" onclick="retrieve_input();"/><br>
             <span id="pwError"></span>
+            <span id="encodedMsg"></span>
           </div>
         </p>
       </div>
     </div>
   </div>
-
+  <form>
+    <label for="encOut" id="textOut" hidden>Encrypted message:</label>
+    <input type="text" id="encOut" name="encOut" size="42" readonly hidden><br><br>
+  </form>
+  
 </body> <!-- HTML display page ends here -->
 <script src="assets/draw-stuff.js"></script> <!-- Load some JS fcns in a file -->
 

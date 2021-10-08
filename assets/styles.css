@@ -14,3 +14,7 @@ canvas {
 .instructionList {
   text-align: left;
 }
+
+#encOut {
+  background-color: rgba(46, 49, 49, 0.25);
+}
