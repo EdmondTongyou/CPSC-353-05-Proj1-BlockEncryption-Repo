@@ -1,3 +1,16 @@
+/*
+  Author Information:
+    Team Name: C.U.H.
+      Clemente Solorio : clem@csu.fullerton.edu
+      Edmond Tongyou : tongyouedmond@csu.fullerton.edu
+      Chukwudi Ikem : godofcollege43@csu.fullerton.edu
+      Daniel Lopez : danomrlpz@csu.fullerton.edu
+
+  File Description:
+    This file contains the CSS styling rules that style the HTML. This file is loaded and referenced
+    inside of index.html.
+*/
+
 body {
   text-align: center;
   font-family: sans-serif;

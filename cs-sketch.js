@@ -1,11 +1,9 @@
 // Author Information
     // Team Name: C.U.H.
         // Clemente Solorio : clem@csu.fullerton.edu
-        // Edmond Tongyou : email
-        // Chukwudi Ikem : email
-        // Daniel Lopez : email
-
-//TODO: Header information (author, description)
+        // Edmond Tongyou : tongyouedmond@csu.fullerton.edu
+        // Chukwudi Ikem : godofcollege43@csu.fullerton.edu
+        // Daniel Lopez : danomrlpz@csu.fullerton.edu
 
 // File Information
     // File Name: cs-sketch.js
